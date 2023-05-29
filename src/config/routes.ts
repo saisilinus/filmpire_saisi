@@ -11,7 +11,7 @@ interface IRoutes {
   Actor: IRoutePath;
 }
 
-const paths: Record<keyof IRoutes, string> = {
+export const paths: Record<keyof IRoutes, string> = {
   Home: '/',
   NotFound: 'not-found',
   Profile: 'profile',

@@ -1,32 +1,38 @@
-import React from 'react';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import React, { useRef } from 'react';
 import { CssBaseline } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import styled from '@emotion/styled';
 import { Navbar } from '.';
+import { ScrollToTop, useAlan } from './Common';
 
-const ToolBar = styled.div`
-  height: 70px
-`;
+const App = () => {
+  const alanBtnContainer = useRef<HTMLDivElement>(null);
+  useAlan();
 
-const Root = styled.div`
-  display: flex;
-  height: 100%;  
-`;
-
-const Content = styled.div`
-  flex-grow: 1;
-  padding: 2em;
-`;
-
-const App = () => (
-  <Root>
-    <CssBaseline />
-    <Navbar />
-    <Content>
-      <ToolBar />
-      <Outlet />
-    </Content>
-  </Root>
-);
+  return (
+    <div css={css({
+      display: 'flex',
+      height: 1,
+    })}
+    >
+      <CssBaseline />
+      <Navbar />
+      <main
+        css={css({
+          flexGrow: 1,
+          padding: '2em',
+          width: '100%',
+        })}
+        id="back-to-top-anchor"
+      >
+        <div css={css({ height: 70 })} />
+        <Outlet />
+      </main>
+      <div ref={alanBtnContainer} />
+      <ScrollToTop />
+    </div>
+  );
+};
 
 export default App;
