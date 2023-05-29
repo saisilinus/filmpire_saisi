@@ -1,0 +1,8 @@
+.cardRoot {
+  position: relative;
+}
+
+.cardContentRoot {
+  position: relative;
+  background-color: transparent;
+}
